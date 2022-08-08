@@ -1,0 +1,94 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "User Registration example",
+    "version": "2.0",
+    "title": "User Registration API"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "user-registration-controller",
+      "description": "User Registration Controller"
+    }
+  ],
+  "paths": {
+    "/v1/createUser": {
+      "post": {
+        "tags": [
+          "user-registration-controller"
+        ],
+        "summary": "createUser",
+        "operationId": "createUserUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userRequestDetails",
+            "description": "userRequestDetails",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserRequestDetails"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserResponseDetails"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "UserRequestDetails": {
+      "type": "object",
+      "properties": {
+        "ipAddress": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        }
+      },
+      "title": "UserRequestDetails"
+    },
+    "UserResponseDetails": {
+      "type": "object",
+      "properties": {
+        "confirmationNumber": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "UserResponseDetails"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+spring:
+  profiles:
+    active:
+  application:
+    name: user-registration
+    basePath: /
+  output:
+    ansi:
+      enabled: always
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+
+management:
+  info:
+    env:
+      enabled: true
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include:
+          - health
+          - info
+          - prometheus
+          - loggers
+  enabled-by-default: true
+  security:
+    enabled: false
